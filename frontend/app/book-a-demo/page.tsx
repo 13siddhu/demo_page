@@ -113,9 +113,8 @@ function NeuTextarea({
       </label>
 
       <div
-        className={`neu-input-wrap neu-input-wrap--textarea${
-          error ? " neu-input-wrap--error" : ""
-        }`}
+        className={`neu-input-wrap neu-input-wrap--textarea${error ? " neu-input-wrap--error" : ""
+          }`}
       >
         <span className="neu-input-icon neu-input-icon--top">{icon}</span>
         <textarea
@@ -205,6 +204,7 @@ export default function BookDemoModal({ onClose }: BookDemoModalProps) {
         });
 
         if (response.ok) {
+          window.alert("Your request has been successfully submitted");
           setSubmitted(true);
           setForm(initialForm);
           setTimeout(() => setSubmitted(false), 3200);
@@ -322,9 +322,8 @@ export default function BookDemoModal({ onClose }: BookDemoModalProps) {
 
             <button
               type="submit"
-              className={`neu-submit-btn${
-                submitted ? " neu-submit-btn--done" : ""
-              }`}
+              className={`neu-submit-btn${submitted ? " neu-submit-btn--done" : ""
+                }`}
               disabled={submitted}
             >
               {submitted ? "✓  Request Submitted!" : "Submit Request"}
