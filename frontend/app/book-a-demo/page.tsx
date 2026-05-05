@@ -204,10 +204,9 @@ export default function BookDemoModal({ onClose }: BookDemoModalProps) {
         });
 
         if (response.ok) {
-          window.alert("Your request has been successfully submitted");
           setSubmitted(true);
           setForm(initialForm);
-          setTimeout(() => setSubmitted(false), 3200);
+          // Notice: No window.alert() here anymore
         } else {
           console.error("Failed to submit form");
         }
@@ -331,6 +330,24 @@ export default function BookDemoModal({ onClose }: BookDemoModalProps) {
           </form>
         </div>
       </div>
+
+      {submitted && (
+        <div className="neu-popup-overlay">
+          <div className="neu-popup-card">
+            <div className="neu-popup-icon-wrap">
+              <span className="neu-popup-icon">✓</span>
+            </div>
+            <h3 className="neu-popup-title">Success!</h3>
+            <p className="neu-popup-text">Your request has been successfully submitted</p>
+            <button
+              className="neu-popup-close"
+              onClick={() => setSubmitted(false)}
+            >
+              Great!
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
