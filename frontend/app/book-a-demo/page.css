@@ -1,0 +1,463 @@
+/* ============================================================
+   Book Demo Modal — Clean Neumorphic UI
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --neu-bg: #eaedf2;
+  --neu-surface: #eaedf2;
+
+  --neu-shadow-light: #ffffff;
+  --neu-shadow-dark: #b8bec7;
+
+  --neu-primary: #3d56b0;
+  --neu-primary-soft: #8fa4e8;
+
+  --neu-text-dark: #1e2a45;
+  --neu-text-mid: #4a5568;
+  --neu-text-soft: #718096;
+  --neu-text-muted: #a0aec0;
+
+  --neu-danger: #f5365c;
+  --neu-success-a: #2dce89;
+  --neu-info-text: #3d56b0;
+  --neu-info-accent: #8fa4e8;
+
+  --sh-raised: 8px 8px 16px var(--neu-shadow-dark);
+  --sh-inset:
+    inset 5px 5px 10px var(--neu-shadow-dark),
+    inset -5px -5px 10px var(--neu-shadow-light);
+  --sh-card: 14px 14px 28px var(--neu-shadow-dark);
+  --sh-soft:
+    4px 4px 8px var(--neu-shadow-dark),
+    -4px -4px 8px var(--neu-shadow-light);
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  --font: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ══════════════════════════════════════════
+   BACKDROP
+══════════════════════════════════════════ */
+.neu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  min-height: 100vh;
+  width: 100%;
+
+  background: rgba(14, 20, 36, 0.42);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+  font-family: var(--font);
+}
+
+/* ══════════════════════════════════════════
+   MODAL CARD
+══════════════════════════════════════════ */
+.neu-modal {
+  width: 100%;
+  max-width: 464px;
+  margin: auto;
+  background: var(--neu-bg);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+  overflow: hidden;
+  animation: modalPop 0.32s cubic-bezier(0.34, 1.5, 0.64, 1) both;
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.neu-modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 1.25rem;
+  background: var(--neu-bg);
+  box-shadow: var(--sh-inset);
+}
+
+.neu-header-accent {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--neu-primary);
+  box-shadow: 0 0 0 4px rgba(61, 86, 176, 0.16);
+  flex-shrink: 0;
+}
+
+.neu-modal-title {
+  flex: 1;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--neu-text-dark);
+  letter-spacing: 0.02em;
+  font-family: var(--font);
+}
+
+/* Close button */
+.neu-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: var(--neu-bg);
+  box-shadow: var(--sh-soft);
+  color: var(--neu-primary);
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease,
+    color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.neu-close-btn:hover {
+  color: var(--neu-text-dark);
+  box-shadow: 6px 6px 12px var(--neu-shadow-dark);
+}
+
+.neu-close-btn:active {
+  transform: scale(0.92);
+  box-shadow: var(--sh-inset);
+}
+
+/* ══════════════════════════════════════════
+   BODY
+══════════════════════════════════════════ */
+.neu-modal-body {
+  padding: 1.1rem 1.3rem 1.4rem;
+  background: var(--neu-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ══════════════════════════════════════════
+   INFO NOTICE
+══════════════════════════════════════════ */
+.neu-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  margin-bottom: 0.9rem;
+  border-radius: var(--r-md);
+  background: var(--neu-bg);
+  box-shadow: var(--sh-soft);
+  border-left: 3px solid var(--neu-info-accent);
+  color: var(--neu-info-text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  font-family: var(--font);
+}
+
+.neu-notice-icon {
+  flex-shrink: 0;
+  color: var(--neu-info-accent);
+}
+
+/* ══════════════════════════════════════════
+   FORM LAYOUT
+══════════════════════════════════════════ */
+.neu-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.neu-form-group {
+  margin-bottom: 0.85rem;
+}
+
+/* ══════════════════════════════════════════
+   LABEL
+══════════════════════════════════════════ */
+.neu-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--neu-text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.38rem;
+  font-family: var(--font);
+}
+
+.neu-star {
+  color: var(--neu-danger);
+}
+
+/* ══════════════════════════════════════════
+   INPUT WRAPPER
+══════════════════════════════════════════ */
+.neu-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: var(--r-md);
+  background: var(--neu-bg);
+  box-shadow: var(--sh-inset);
+  transition: box-shadow 0.25s ease;
+}
+
+.neu-input-wrap:focus-within {
+  box-shadow:
+    var(--sh-inset),
+    0 0 0 2.5px rgba(61, 86, 176, 0.2);
+}
+
+.neu-input-wrap--error {
+  box-shadow:
+    var(--sh-inset),
+    0 0 0 2px rgba(245, 54, 92, 0.38);
+}
+
+.neu-input-wrap--textarea {
+  align-items: flex-start;
+}
+
+.neu-input-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neu-primary);
+  opacity: 0.7;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  transition: opacity 0.2s ease;
+}
+
+.neu-input-wrap:focus-within .neu-input-icon {
+  opacity: 1;
+}
+
+.neu-input-icon--top {
+  top: 0.75rem;
+  transform: none;
+}
+
+/* ══════════════════════════════════════════
+   INPUT / TEXTAREA CONTROL
+══════════════════════════════════════════ */
+.neu-control {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--neu-text-dark);
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: var(--r-md);
+  padding: 0.68rem 0.9rem 0.68rem 2.55rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.neu-control::placeholder {
+  color: var(--neu-text-muted);
+  font-weight: 400;
+}
+
+.neu-control--textarea {
+  resize: vertical;
+  min-height: 86px;
+  padding-top: 0.68rem;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════
+   VALIDATION
+══════════════════════════════════════════ */
+.neu-error {
+  margin: 0.28rem 0 0 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--neu-danger);
+  font-family: var(--font);
+}
+
+/* ══════════════════════════════════════════
+   CHECKBOX
+══════════════════════════════════════════ */
+.neu-checkbox-native {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.neu-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  font-family: var(--font);
+}
+
+.neu-checkbox-box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--r-sm);
+  background: var(--neu-bg);
+  box-shadow: var(--sh-inset);
+  position: relative;
+  margin-top: 1px;
+  transition:
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.neu-checkbox-native:checked + .neu-checkbox-box {
+  background: var(--neu-primary);
+  box-shadow:
+    var(--sh-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.neu-checkbox-native:checked + .neu-checkbox-box::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 6.5px;
+  width: 5px;
+  height: 9px;
+  border: 2.5px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(43deg);
+}
+
+.neu-checkbox-label:hover .neu-checkbox-box {
+  box-shadow: var(--sh-soft);
+}
+
+.neu-checkbox-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--neu-text-mid);
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════
+   SUBMIT BUTTON
+══════════════════════════════════════════ */
+.neu-submit-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.78rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: var(--neu-bg);
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--neu-primary);
+  box-shadow: var(--sh-raised);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.15s ease,
+    color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.neu-submit-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  pointer-events: none;
+}
+
+.neu-submit-btn:hover {
+  box-shadow: 10px 10px 20px var(--neu-shadow-dark);
+  transform: translateY(-2px);
+  color: var(--neu-text-dark);
+}
+
+.neu-submit-btn:active {
+  box-shadow: var(--sh-inset);
+  transform: translateY(0);
+  color: var(--neu-primary);
+}
+
+.neu-submit-btn--done {
+  color: var(--neu-success-a);
+  cursor: default;
+  box-shadow: var(--sh-inset);
+  transform: translateY(0);
+}
+
+.neu-submit-btn:disabled {
+  cursor: default;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 500px) {
+  .neu-backdrop {
+    padding: 1rem;
+  }
+
+  .neu-modal {
+    border-radius: var(--r-lg);
+  }
+
+  .neu-row-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .neu-modal-body {
+    padding: 1rem 1.1rem 1.2rem;
+  }
+
+  .neu-modal-header {
+    padding: 0.85rem 1.1rem;
+  }
+}
